@@ -1,5 +1,5 @@
 <template>
-  <div class="grid h-screen place-content-center">
+  <div class="grid h-screen place-content-center" v-once>
     <ChrismasTree :depth="4" />
     <div class="h-16 w-12 place-self-center bg-amber-900"></div>
   </div>
