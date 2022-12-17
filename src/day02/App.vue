@@ -1,14 +1,10 @@
 <template>
   <main class="mx-auto max-w-xl p-40">
     <div class="flex flex-col gap-4">
-      <span class="self-start rounded bg-red-800 p-4 text-white">{{
-        setup
+      <span class="self-start rounded bg-red-800 p-4 text-white">{{ setup }}</span>
+      <span v-if="isDeliveryVisable" class="self-end rounded bg-green-800 p-4 text-white">{{
+        delivery
       }}</span>
-      <span
-        v-if="isDeliveryVisable"
-        class="self-end rounded bg-green-800 p-4 text-white"
-        >{{ delivery }}</span
-      >
       <menu class="mt-4">
         <button
           v-if="!isDeliveryVisable"
@@ -17,11 +13,7 @@
         >
           Tell me!
         </button>
-        <button
-          v-else
-          @click="fetchJoke"
-          class="rounded border bg-emerald-500 p-2 text-white"
-        >
+        <button v-else @click="fetchJoke" class="rounded border bg-emerald-500 p-2 text-white">
           Another one!
         </button>
       </menu>

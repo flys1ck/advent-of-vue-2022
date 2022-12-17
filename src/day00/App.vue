@@ -11,11 +11,7 @@
         {{ field }}
       </button>
     </div>
-    <button
-      v-if="isGameOver"
-      class="mt-12 rounded bg-blue-400 px-2 py-2"
-      @click="resetBoard"
-    >
+    <button v-if="isGameOver" class="mt-12 rounded bg-blue-400 px-2 py-2" @click="resetBoard">
       Play again
     </button>
   </main>

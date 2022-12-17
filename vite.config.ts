@@ -7,7 +7,9 @@ import AutoImport from "unplugin-auto-import/vite";
 export default defineConfig({
   plugins: [
     Vue(),
-    Components(),
+    Components({
+      dirs: ["src/**/components"],
+    }),
     AutoImport({ imports: ["vue"], eslintrc: { enabled: true } }),
   ],
 });
