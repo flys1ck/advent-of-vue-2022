@@ -8,6 +8,8 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     ChrismasTree: typeof import('./src/day04/components/ChrismasTree.vue')['default']
+    ChristmasPresent: typeof import('./src/day07/components/ChristmasPresent.vue')['default']
+    ChristmasTree: typeof import('./src/day07/components/ChristmasTree.vue')['default']
     CountdownSegment: typeof import('./src/day03/components/CountdownSegment.vue')['default']
     ProductSelect: typeof import('./src/day06/components/ProductSelect.vue')['default']
   }
