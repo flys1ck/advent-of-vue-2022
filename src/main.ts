@@ -1,5 +1,6 @@
 import { createApp } from "vue";
-import App from "./day07/App.vue";
+import I18n from "./plugins/i18n";
+import App from "./day08/App.vue";
 import "./tailwind.css";
 
-createApp(App).mount("#app");
+createApp(App).use(I18n).mount("#app");
