@@ -7,22 +7,21 @@
 </template>
 
 <script setup lang="ts">
-interface Product {
-  id: number;
-  title: string;
-  price: number;
-}
+import type { Product } from "../service/products";
 
-defineProps<{
+const props = defineProps<{
   products: Product[];
-  modelValue: number | null;
+  modelValue: Product;
 }>();
 
 const emit = defineEmits<{
-  (e: "update:modelValue", value: number): void;
+  (e: "update:modelValue", product: Product): void;
 }>();
 
-const onSelectChange = (selectedId: string) => {
-  emit("update:modelValue", parseInt(selectedId));
+const onSelectChange = (selectedProductId: string) => {
+  const product = props.products.find((product) => product.id === parseInt(selectedProductId));
+  if (!product) return;
+
+  emit("update:modelValue", product);
 };
 </script>

@@ -1,8 +1,8 @@
 <template>
   <div class="m-auto flex h-screen w-screen max-w-lg flex-col justify-center gap-4">
     <template v-if="products">
-      <ProductSelect v-model.number="firstProductId" :products="products" />
-      <ProductSelect v-model.number="secondProductId" :products="products" />
+      <ProductSelect v-model="firstProduct" :products="products" />
+      <ProductSelect v-model="secondProduct" :products="products" />
     </template>
     <p v-if="firstProduct && secondProduct">
       For a
@@ -14,30 +14,18 @@
 </template>
 
 <script setup lang="ts">
-interface Product {
-  id: number;
-  title: string;
-  price: number;
-}
+import type { Product } from "./service/products";
+import { getProducts } from "./service/products";
 
 const products = ref<Product[]>([]);
-const firstProductId = ref<number | null>(null);
-const secondProductId = ref<number | null>(null);
+const firstProduct = ref<Product | null>(null);
+const secondProduct = ref<Product | null>(null);
 
-fetch("https://dummyjson.com/products")
-  .then((res) => res.json())
-  .then((res) => {
-    if (!res.products) return;
-    products.value = res.products;
-    firstProductId.value = res.products[0].id;
-    secondProductId.value = res.products[0].id;
-  });
+getProducts().then((productsArray) => {
+  products.value = productsArray;
 
-const firstProduct = computed(() => {
-  return products.value.find((product) => product.id === firstProductId.value);
-});
-
-const secondProduct = computed(() => {
-  return products.value.find((product) => product.id === secondProductId.value);
+  if (!productsArray) return;
+  firstProduct.value = productsArray[0];
+  secondProduct.value = productsArray[0];
 });
 </script>
