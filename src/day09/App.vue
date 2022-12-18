@@ -7,7 +7,7 @@
       <component v-for="present in computedPresents" :key="present.id" :is="present.importName" />
     </div>
     <button class="mt-24 rounded border bg-slate-400 p-2" @click="isSortActive = !isSortActive">
-      Toggle Sort {{ isSortActive }}
+      Toggle Sort
     </button>
   </div>
 </template>
