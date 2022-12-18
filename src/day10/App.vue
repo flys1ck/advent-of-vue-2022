@@ -1,3 +1,3 @@
-<template>Hello</template>
+<template>Skipped</template>
 
 <script setup lang="ts"></script>
